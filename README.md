@@ -12,7 +12,7 @@ apt install -y curl socat wget
 sudo apt upgrade
 ```
 
-**注意：**如果是centos系统，则分别运行yum update -y和yum install -y curl socat wget
+**注意:** 如果是centos系统，则分别运行yum update -y和yum install -y curl socat wget
 
 # 安装x-ui
 
