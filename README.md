@@ -66,31 +66,31 @@ sudo apt install -y curl gnupg2 ca-certificates lsb-release
 sudo apt install -y nginx
 ```
 
-**启动niginx服务**
+**启动nginx服务**
 
 ```
 sudo systemctl start nginx
 ```
 
-**niginx运行状态确定**
+**nginx运行状态确定**
 
 ```
 sudo systemctl status nginx
 ```
 
-**停止niginx服务**
+**停止nginx服务**
 
 ```
 sudo systemctl stop nginx
 ```
 
-**重载niginx服务**
+**重载nginx服务**
 
 ```
 sudo systemctl restart nginx
 ```
 
-**niginx配置文件**
+**nginx配置文件**
 
 ```
 user  nginx;
