@@ -5,13 +5,6 @@ mode: Rule
 log-level: info
 external-controller: :9090
 proxies:
-  - {name: 🇸🇬 新加坡_Telegram@kxswa, server: 5.44.249.44, port: 3306, type: trojan, password: 3c4e10af98c30972, sni: n2.gladns.com, skip-cert-verify: true}
-  - {name: 🇸🇬 新加坡_Telegram@kxswa 2, server: 5.44.249.42, port: 3306, type: trojan, password: 3c4e10af98c30972, sni: n2.gladns.com, skip-cert-verify: true}
-  - {name: 🇸🇬 新加坡_Telegram@kxswa 3, server: 5.44.249.50, port: 3306, type: trojan, password: 3c4e10af98c30972, sni: n2.gladns.com, skip-cert-verify: true}
-  - {name: 🇸🇬 新加坡_Telegram@kxswa 4, server: 5.44.249.43, port: 3306, type: trojan, password: 3c4e10af98c30972, sni: n2.gladns.com, skip-cert-verify: true}
-  - {name: 🇸🇬 新加坡_Telegram@kxswa 5, server: 5.44.249.52, port: 3306, type: trojan, password: 3c4e10af98c30972, sni: n2.gladns.com, skip-cert-verify: true}
-  - {name: 🇸🇬 新加坡_Telegram@kxswa 6, server: 5.44.249.53, port: 3306, type: trojan, password: 3c4e10af98c30972, sni: n2.gladns.com, skip-cert-verify: true}
-  - {name: 🇸🇬 新加坡_Telegram@kxswa 17, server: 13.229.184.181, port: 443, type: ss, cipher: aes-256-cfb, password: amazonskr05}
   - {name: 🇭🇰 香港_Telegram@kxswa 2, server: 103.152.221.48, port: 3306, type: trojan, password: 3c4e10af98c30972, sni: n2.gladns.com, skip-cert-verify: true}
   - {name: 🇭🇰 香港_Telegram@kxswa 6, server: 1.65.218.52, port: 443, type: ss, cipher: aes-128-gcm, password: a-wym4ovY4Yw, plugin: v2ray-plugin, plugin-opts: {mode: websocket, host: "", path: /, tls: false, mux: true, skip-cert-verify: true}}
   - {name: 🇭🇰 香港_Telegram@kxswa 8, server: v3-js-sg.as9929.uk, port: 22466, type: ss, cipher: aes-128-gcm, password: e41b8b00-d940-4006-80ff-bc7865b3b5e0}
@@ -25,36 +18,12 @@ proxies:
   - {name: 🇭🇰 香港_Telegram@kxswa 32, server: hk09.network-cdn-gw.cc, port: 47709, type: ss, cipher: chacha20-ietf-poly1305, password: 3ae13eaa-7e79-4079-9821-6178d35029ff}
   - {name: 🇭🇰 香港_Telegram@kxswa 33, server: zf.lalayun.cyou, port: 47931, type: vmess, uuid: 612f2c37-923e-337b-96ec-7911055b2a68, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /v2ray, headers: {Host: zf.lalayun.cyou}}}
   - {name: 🇭🇰 香港_Telegram@kxswa 34, server: 8879v-rmyielu.qlh9n89kw-v17.my777999.top, port: 38996, type: vmess, uuid: 861de7db-5ada-4b36-903c-0ad6ba25d75a, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true}
-  - {name: 🇨🇳 台湾_Telegram@kxswa 4, server: 60.248.114.185, port: 3306, type: trojan, password: 3c4e10af98c30972, sni: n2.gladns.com, skip-cert-verify: true}
-  - {name: 🇨🇳 台湾_Telegram@kxswa 5, server: 60.248.114.187, port: 3306, type: trojan, password: 3c4e10af98c30972, sni: n2.gladns.com, skip-cert-verify: true}
-  - {name: 🇨🇳 台湾_Telegram@kxswa 6, server: 60.248.114.186, port: 3306, type: trojan, password: 3c4e10af98c30972, sni: n2.gladns.com, skip-cert-verify: true}
-  - {name: 🇨🇳 台湾_Telegram@kxswa 7, server: 60.248.114.184, port: 3306, type: trojan, password: 3c4e10af98c30972, sni: n2.gladns.com, skip-cert-verify: true}
-  - {name: 🇯🇵 日本_Telegram@kxswa 2, server: 103.168.155.73, port: 3306, type: trojan, password: 3c4e10af98c30972, sni: n2.gladns.com, skip-cert-verify: true}
-  - {name: 🇯🇵 日本_Telegram@kxswa 3, server: 103.168.155.69, port: 3306, type: trojan, password: 3c4e10af98c30972, sni: n2.gladns.com, skip-cert-verify: true}
-  - {name: 🇺🇲 美国_Telegram@kxswa, server: 45.9.10.103, port: 443, type: trojan, password: WpfQAbO2wg, skip-cert-verify: true}
-  - {name: 🇺🇲 美国_Telegram@kxswa 15, server: 47.76.185.99, port: 443, type: ss, cipher: aes-128-gcm, password: a-wym4ovY4Yw, plugin: v2ray-plugin, plugin-opts: {mode: websocket, host: "", path: /, tls: false, mux: true, skip-cert-verify: true}}
-  - {name: 🇰🇷 韩国_Telegram@kxswa, server: 138.2.114.255, port: 443, type: trojan, password: 81d93f62-15a2-4994-adb9-0b5d906aac7e, skip-cert-verify: true}
 
-  - name: ss
-    type: ss
-    server: vps.xiui.top
-    port: "30354"
-    cipher: aes-256-gcm
-    password: 6RH3UCHLLq6ZKjBy5umE64ywotHzG7ZE0TeU0LO0V04f
-    udp: true
 proxy-groups:
   - name: 🚀 节点选择
     type: select
     proxies:
-      - Google
       - DIRECT
-      - 🇸🇬 新加坡_Telegram@kxswa
-      - 🇸🇬 新加坡_Telegram@kxswa 2
-      - 🇸🇬 新加坡_Telegram@kxswa 3
-      - 🇸🇬 新加坡_Telegram@kxswa 4
-      - 🇸🇬 新加坡_Telegram@kxswa 5
-      - 🇸🇬 新加坡_Telegram@kxswa 6
-      - 🇸🇬 新加坡_Telegram@kxswa 17
       - 🇭🇰 香港_Telegram@kxswa 2
       - 🇭🇰 香港_Telegram@kxswa 6
       - 🇭🇰 香港_Telegram@kxswa 8
@@ -68,21 +37,7 @@ proxy-groups:
       - 🇭🇰 香港_Telegram@kxswa 32
       - 🇭🇰 香港_Telegram@kxswa 33
       - 🇭🇰 香港_Telegram@kxswa 34
-      - 🇨🇳 台湾_Telegram@kxswa 4
-      - 🇨🇳 台湾_Telegram@kxswa 5
-      - 🇨🇳 台湾_Telegram@kxswa 6
-      - 🇨🇳 台湾_Telegram@kxswa 7
-      - 🇯🇵 日本_Telegram@kxswa 2
-      - 🇯🇵 日本_Telegram@kxswa 3
-      - 🇺🇲 美国_Telegram@kxswa
-      - 🇺🇲 美国_Telegram@kxswa 15
-      - 🇰🇷 韩国_Telegram@kxswa
  
-  - name: Google
-    type: select
-    proxies:
-      - DIRECT
-      - ss
 rules:
   - DOMAIN-SUFFIX,icourse163.org,DIRECT
   - DOMAIN-SUFFIX,xuetangx.com,DIRECT
