@@ -20,7 +20,7 @@ clash 默认会在 ~/.config/clash 目录下生成两个配置文件 config.yaml
 \# 创建clash.service文件，并编辑该文件
 
 ```
-Sudo vim /etc/systemd/system/clash.service
+sudo vim /etc/systemd/system/clash.service
 ```
 
 \# 粘贴以下内容
@@ -32,7 +32,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/clash -f ~/.config/clash/config.yaml
+ExecStart=/usr/bin/clash -f /root/.config/clash/config.yaml
 Restart=on-failure
 
 [Install]
