@@ -276,14 +276,14 @@ rule-providers:
     interval: 86400
   ChinaCompanyIp:
     type: http
-    behavior: classical
+    behavior: ipcidr
     format: yaml
     path: ./rules/ChinaCompanyIp.yaml
     url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaCompanyIp.yaml"
     interval: 86400
   ChinaIp:
     type: http
-    behavior: classical
+    behavior: ipcidr
     format: yaml
     path: ./rules/ChinaIp.yaml
     url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaIp.yaml"
