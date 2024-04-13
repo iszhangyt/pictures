@@ -295,6 +295,7 @@ rules:
   - DOMAIN,stun.l.google.com,🚀 节点选择
   - DOMAIN-SUFFIX,frp.one,DIRECT
   - DOMAIN-SUFFIX,miyoushe.com,DIRECT
+  - DOMAIN-SUFFIX,browserleaks.com,🚀 节点选择
   # 自己添加的规则
   - DOMAIN-SUFFIX,xn--ngstr-lra8j.com,🚀 节点选择
   - DOMAIN-SUFFIX,services.googleapis.cn,🚀 节点选择
@@ -310,8 +311,8 @@ rules:
   - RULE-SET,ChinaMedia,DIRECT
   - RULE-SET,BanAD,REJECT
   - RULE-SET,BanProgramAD,REJECT
-  - RULE-SET,ChinaCompanyIp,DIRECT
-  - RULE-SET,ChinaIp,DIRECT
+  - RULE-SET,ChinaCompanyIp,DIRECT,no-resolve
+  - RULE-SET,ChinaIp,DIRECT,no-resolve
   - GEOSITE,CN,DIRECT
   - GEOIP,CN,DIRECT,no-resolve
   - MATCH,🚀 节点选择
