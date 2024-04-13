@@ -302,13 +302,16 @@ rules:
   - RULE-SET,YouTubeMusic,🚀 节点选择
   - RULE-SET,Google,🍉Google
   - RULE-SET,GoogleCNProxyIP,🍉Google
+  - GEOSITE,google,🍉Google
+  - GEOIP,google,🍉Google,no-resolve
   - RULE-SET,LocalAreaNetwork,DIRECT
   - RULE-SET,UnBan,DIRECT
   - RULE-SET,ChinaDomain,DIRECT
   - RULE-SET,ChinaMedia,DIRECT
   - RULE-SET,BanAD,REJECT
   - RULE-SET,BanProgramAD,REJECT
-  - RULE-SET,ChinaCompanyIp,DIRECT,no-resolve
-  - RULE-SET,ChinaIp,DIRECT,no-resolve
+  - RULE-SET,ChinaCompanyIp,DIRECT
+  - RULE-SET,ChinaIp,DIRECT
+  - GEOSITE,CN,DIRECT
   - GEOIP,CN,DIRECT,no-resolve
   - MATCH,🚀 节点选择
