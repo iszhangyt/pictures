@@ -52,7 +52,7 @@ proxy-providers:
   provider4:
     <<: *p
     path: ./proxy/provider4.yaml
-    url: "https://s.jockerchief.online/v3/subscr?id=17b9b4a54ccd444382f737a87eba7098"
+    url: "https://s.jockerchief.online/v3/subscr?id=d92c81815537411ebda1402ab120d653"
 
   provider5:
     <<: *p
