@@ -111,18 +111,17 @@ dns:
     - '+.local'
   default-nameserver:
     - 223.5.5.5
-    - 119.29.29.29
+    - 8.8.8.8
     - 114.114.114.114
   nameserver:
-    - 'tls://8.8.4.4#🚀 节点选择'
-    - 'tls://1.0.0.1#🚀 节点选择'
-    - 'tls://[2001:4860:4860::8844]#🚀 节点选择'
-    - 'tls://[2606:4700:4700::1001]#🚀 节点选择'
-  fallback: []
+    - 'tls://8.8.8.8'
+    - 'tls://1.0.0.1'
+    - 'tls://8.8.4.4'
+    - 'tls://1.1.1.1'
   fake-ip-filte:
-  - dns.msftncsi.com
-  - www.msftncsi.com
-  - www.msftconnecttest.com
+    - '*'
+    - '+.lan'
+    - '+.local'
   proxy-server-nameserver:
     - https://doh.pub/dns-query
   nameserver-policy:
@@ -196,13 +195,13 @@ proxies:
 
 proxy-groups:
   - {name: 🚀 节点选择, type: select, proxies: [海獭, taishan, 一元, 哈基米, 365Cloud, 自建节点, DIRECT]}
-  - {name: 🍉Google, <<: *use1, filter: "(?i)美|us|unitedstates|united states", proxies: [DIRECT]}
+  - {name: 自建节点, type: select, proxies: [香港, 美国cdn, hysteria2, 美国hy2]}
+  - {name: 365Cloud, <<: *use5}
   - {name: 海獭, <<: *use1}
+  - {name: 🍉Google, <<: *use1, filter: "(?i)美|us|unitedstates|united states", proxies: [DIRECT]}
   - {name: taishan, <<: *use2}
   - {name: 一元, <<: *use3}
   - {name: 哈基米, <<: *use4}
-  - {name: 365Cloud, <<: *use5}
-  - {name: 自建节点, type: select,  proxies: [香港, 美国cdn, hysteria2, 美国hy2]}
   
 rule-providers:
   YouTube:
