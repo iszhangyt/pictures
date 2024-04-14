@@ -281,6 +281,10 @@ rule-providers:
 
 rules:
   # 自己添加的规则
+  - DOMAIN-SUFFIX,wenku8.cc,🚀 节点选择
+  - DOMAIN-SUFFIX,wenku8.net,🚀 节点选择
+  - DOMAIN-SUFFIX,linovelib.com,🚀 节点选择
+  - DOMAIN,myip.ipip.net,🚀 节点选择
   - DOMAIN,stun.l.google.com,🚀 节点选择
   - DOMAIN-SUFFIX,frp.one,DIRECT
   - DOMAIN-SUFFIX,miyoushe.com,DIRECT
