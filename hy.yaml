@@ -270,6 +270,13 @@ rule-providers:
     path: ./rules/ChinaIp.yaml
     url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaIp.yaml"
     interval: 86400
+  gfw:
+    type: http
+    behavior: domain
+    format: yaml
+    url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt"
+    path: ./rules/gfw.yaml
+    interval: 86400
 
 
 rules:
@@ -287,6 +294,7 @@ rules:
   - RULE-SET,GoogleCNProxyIP,🍉Google
   - GEOSITE,google,🍉Google
   - GEOIP,google,🍉Google,no-resolve
+  - RULE-SET,gfw,🚀 节点选择
   - RULE-SET,LocalAreaNetwork,DIRECT
   - RULE-SET,UnBan,DIRECT
   - RULE-SET,ChinaDomain,DIRECT
