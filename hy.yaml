@@ -296,13 +296,13 @@ rules:
   - DOMAIN-SUFFIX,wenku8.net,🚀 节点选择
   - DOMAIN-SUFFIX,linovelib.com,🚀 节点选择
   - DOMAIN,myip.ipip.net,🚀 节点选择
-  - DOMAIN,stun.l.google.com,🚀 节点选择
+  #- DOMAIN,stun.l.google.com,🚀 节点选择
   - DOMAIN-SUFFIX,frp.one,DIRECT
   - DOMAIN-SUFFIX,miyoushe.com,DIRECT
   - DOMAIN-SUFFIX,browserleaks.com,🚀 节点选择
   # 自己添加的规则
-  - DOMAIN-SUFFIX,xn--ngstr-lra8j.com,🚀 节点选择
-  - DOMAIN-SUFFIX,services.googleapis.cn,🚀 节点选择
+  #- DOMAIN-SUFFIX,xn--ngstr-lra8j.com,🚀 节点选择
+  #- DOMAIN-SUFFIX,services.googleapis.cn,🚀 节点选择
   - RULE-SET,YouTube,🚀 节点选择
   - RULE-SET,YouTubeMusic,🚀 节点选择
   - RULE-SET,Google,🍉Google
