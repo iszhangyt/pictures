@@ -111,6 +111,13 @@ dns:
       - https://doh.pub/dns-query
       - https://dns.alidns.com/dns-query
 
+profile:
+  store-selected: true
+  # 储存 API 对策略组的选择，以供下次启动时使用
+  store-fake-ip: true
+  # 储存 fakeip 映射表，域名再次发生连接时，使用原有映射地址
+
+
 proxies:
   - name: '美国cdn'
     type: vless
@@ -143,7 +150,8 @@ proxies:
     up: "50 Mbps" # 若不写单位，默认为 Mbps
     down: "250 Mbps" # 若不写单位，默认为 Mbps
     password: 123456
-    sni: ha.isgv.me
+    sni: bing.com
+    skip-cert-verify: true
   - name: "香港"
     type: vless
     server: 23.97.65.209
