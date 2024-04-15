@@ -77,7 +77,7 @@ geox-url:
 
 tun:
   enable: true
-  stack: gvisor
+  stack: system
   dns-hijack:
     - 'any:53'
   auto-route: true
