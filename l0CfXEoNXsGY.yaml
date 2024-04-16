@@ -1,16 +1,4 @@
 proxies:
-  - name: "美国hy2"
-    type: hysteria2
-    server: 23.94.84.40
-    port: 443
-    #  up和down均不写或为0则使用BBR流控
-    up: "50 Mbps" # 若不写单位，默认为 Mbps
-    down: "250 Mbps" # 若不写单位，默认为 Mbps
-    password: 123456
-    udp: true
-    sni: bing.com
-    skip-cert-verify: true
-  
     - name: "香港"
     type: vless
     server: 23.97.65.209
