@@ -37,7 +37,7 @@ proxy-providers:
   provider1: 
     <<: *p
     path: ./proxy/provider1.yaml
-    url: "https://get-d.haitasub.site/api/v1/client/subscribe?token=202dffbfb8b4d8092305f5f087cd17ad"
+    url: "https://api.haita.io/api/v1/client/subscribe?token=202dffbfb8b4d8092305f5f087cd17ad"
 
   provider2:
     <<: *p
