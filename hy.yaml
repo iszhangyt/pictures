@@ -194,7 +194,7 @@ proxy-groups:
   - {name: 自建节点, type: select, proxies: [香港, 美国cdn, hysteria2, 美国hy2]}
   - {name: 365Cloud, <<: *use5}
   - {name: 海獭, <<: *use1}
-  - {name: 🍉Google, <<: *use1, filter: "(?i)美|us|unitedstates|united states", proxies: [DIRECT]}
+  - {name: 🍉Google, <<: *use1, filter: "(?i)美|us|unitedstates|united states", proxies: [DIRECT, 365Cloud]}
   - {name: taishan, <<: *use2}
   - {name: 一元, <<: *use3}
   - {name: 哈基米, <<: *use4}
