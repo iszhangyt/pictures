@@ -127,18 +127,18 @@ profile:
 proxies:
   - name: '美国cdn'
     type: vless
-    server: cdn.isgv.me
+    server: 103.184.45.248
     port: 443
-    uuid: d51f123b-8066-4053-9189-5ef2fe854005
-    skip-cert-verify: true
+    uuid: 2c2a6393-0fa4-405d-e762-a89f6dacdf8f
+    # skip-cert-verify: true
     udp: true
     tls: true
     network: ws
-    servername: vps.isgv.me
+    servername: cf.isgv.me
     ws-opts:
-      path: "/d51f123b"
+      path: "/2c2a6393"
       headers:
-        Host: vps.isgv.me
+        Host: cf.isgv.me
   - name: "hysteria2"
     type: hysteria2
     server: 23.97.65.209
