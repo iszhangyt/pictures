@@ -107,7 +107,7 @@ secret: ''
 external-controller: 127.0.0.1:9090
 
 geodata-mode: true
-geo-auto-update: false
+geo-auto-update: true
 geo-update-interval: 24
 geox-url:
   geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
