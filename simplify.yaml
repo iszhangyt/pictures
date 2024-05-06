@@ -1,0 +1,334 @@
+######### 锚点 start #######
+
+#这里是订阅更新和延迟测试相关的
+p: &p {type: http, interval: 3600, health-check: {enable: true, url: http://www.gstatic.com/generate_204, interval: 300}}
+
+use1: &use1
+  type: select
+  use:
+  - '海獭'
+
+use2: &use2
+  type: select
+  use:
+  - 'taishan'
+
+
+use5: &use5
+  type: select
+  use:
+  - '365Cloud'
+
+
+
+######### 锚点 end #######
+
+
+# url 里填写自己的订阅,名称不能重复
+proxy-providers: 
+  '海獭': 
+    <<: *p
+    path: ./proxy/provider1.yaml
+    url: "https://get-d.haitasub.site/api/v1/client/subscribe?token=202dffbfb8b4d8092305f5f087cd17ad"
+
+  'taishan':
+    <<: *p
+    path: ./proxy/provider2.yaml
+    url: "https://google.iszhangyt.cn/proxy/https/us.tsnet.click/api/v1/client/subscribe?token=9acb0b89bc9c9d90af9a5862eb690a51"
+
+
+  '365Cloud':
+    <<: *p
+    path: ./proxy/provider5.yaml
+    url: "http://vip.365cloud.me/api/v1/client/subscribe?token=c1de85272bd0979ad5b4ca7afd1f7a86"
+
+dns:
+  enable: true
+  prefer-h3: true
+  listen: 0.0.0.0:1053
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*'
+    - '+.lan'
+    - '+.local'
+    - '+.msftncsi.com'
+    - '+.msftconnecttest.com'
+    - '+.xboxlive.com'
+    - 'xbox.*.microsoft.com'
+    - +.stun.*.*
+    - +.stun.*.*.*
+    - +.stun.*.*.*.*
+    - +.stun.*.*.*.*.*
+    - "*.n.n.srv.nintendo.net"
+    - +.stun.playstation.net
+  default-nameserver:
+    - 1.1.1.1
+    - 8.8.8.8
+    - 114.114.114.114
+    - 223.6.6.6
+  nameserver:
+    - system
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  proxy-server-nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  nameserver-policy:
+    "geosite:cn,private":
+      #- system
+      - https://doh.pub/dns-query
+      - https://dns.alidns.com/dns-query
+    "geosite:geolocation-!cn,gfw":
+      - tls://8.8.4.4#节点选择
+      - https://1.0.0.1/dns-query#节点选择
+      - tls://8.8.8.8#节点选择
+      - https://1.1.1.1/dns-query#节点选择
+      - https://cloudflare-dns.com/dns-query#节点选择
+
+profile:
+  store-selected: true
+  # 储存 API 对策略组的选择，以供下次启动时使用
+  store-fake-ip: true
+  # 储存 fakeip 映射表，域名再次发生连接时，使用原有映射地址
+
+#unified-delay: true #优化延迟显示
+
+find-process-mode: strict
+global-client-fingerprint: chrome
+
+mode: rule
+ipv6: false
+log-level: info
+allow-lan: false
+mixed-port: 7890
+secret: ''
+external-controller: 127.0.0.1:9090
+
+geodata-mode: true
+geo-auto-update: false
+geo-update-interval: 24
+geox-url:
+  geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+
+tun:
+  enable: true
+  stack: gvisor
+  dns-hijack:
+    - 'any:53'
+  auto-route: true
+  auto-detect-interface: true
+
+
+  
+proxies:
+  - name: '美国cdn'
+    type: vless
+    server: 103.184.45.248
+    port: 443
+    uuid: 2c2a6393-0fa4-405d-e762-a89f6dacdf8f
+    # skip-cert-verify: true
+    udp: true
+    tls: true
+    network: ws
+    servername: cf.isgv.me
+    ws-opts:
+      path: "/2c2a6393"
+      headers:
+        Host: cf.isgv.me
+  - name: "hysteria2"
+    type: hysteria2
+    server: 23.97.65.209
+    port: 443
+    #  up和down均不写或为0则使用BBR流控
+    up: "30 Mbps" # 若不写单位，默认为 Mbps
+    down: "350 Mbps" # 若不写单位，默认为 Mbps
+    password: 123456
+    sni: hy.isgv.me
+
+  - name: "美国hy2"
+    type: hysteria2
+    server: 23.94.84.40
+    port: 443
+    #  up和down均不写或为0则使用BBR流控
+    up: "50 Mbps" # 若不写单位，默认为 Mbps
+    down: "250 Mbps" # 若不写单位，默认为 Mbps
+    password: 123456
+    sni: bing.com
+    skip-cert-verify: true
+  
+  - name: "香港"
+    type: vless
+    server: 23.97.65.209
+    port: 30354
+    uuid: eac3bbb3-e085-48f6-ced2-585f8300d98b
+    network: tcp
+    tls: true
+    udp: true
+    servername: 23-97-65-209.nip.io
+    flow: xtls-rprx-vision 
+    client-fingerprint: chrome
+    # xudp: true #default
+    # skip-cert-verify: true
+
+  # 链式代理节点
+  - name: "链式"
+    type: ss
+    server: 23.94.84.40
+    port: 51429
+    cipher: aes-256-gcm
+    password: "O340oVJ7XAetLonVnludY0fh5l5Wb6n3FH7pH26TnIgp"
+    udp: true
+  
+  - name: CF Worker
+    type: vless
+    server: www.gov.se
+    port: 443
+    uuid: b95fead6-7101-43f9-b512-96efeff05bb8
+    udp: true
+    tls: true
+    network: ws
+    #client-fingerprint:
+    skip-cert-verify: true 
+    servername: aa.iszhangyt.cn
+    ws-opts:
+      path: "/?ed=2048"
+      headers:
+        Host: aa.iszhangyt.cn
+
+proxy-groups:
+  - {name: 节点选择, type: select, proxies: [海獭, taishan, 365Cloud, 自建节点, 链式代理], icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg}
+  - {name: 自建节点, type: select, proxies: [香港, 美国cdn, hysteria2, 美国hy2, CF Worker]}
+  - {name: 365Cloud, <<: *use5}
+  - {name: 海獭, <<: *use1}
+  - {name: Google, <<: *use1, filter: "(?i)美|us|unitedstates|united states", proxies: [DIRECT, 365Cloud], icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google.svg}
+  - {name: taishan, <<: *use2}
+
+  #链式代理
+  - {name: 链式代理, type: relay, proxies: [海獭, 链式]}
+
+rule-providers:
+  YouTube:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rules/YouTube_No_Resolve.yaml
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube_No_Resolve.yaml"
+    interval: 86400
+  YouTubeMusic:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rules/YouTubeMusic.yaml
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTubeMusic/YouTubeMusic.yaml"
+    interval: 86400
+  Google:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rules/Google_No_Resolve.yaml
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google_No_Resolve.yaml"
+    interval: 86400
+  GoogleCNProxyIP:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rules/GoogleCNProxyIP.yaml
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/GoogleCNProxyIP.yaml"
+    interval: 86400
+  LocalAreaNetwork:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rules/LocalAreaNetwork.yaml
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/LocalAreaNetwork.yaml"
+    interval: 86400
+  UnBan:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rules/UnBan.yaml
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/UnBan.yaml"
+    interval: 86400
+  ChinaDomain:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rules/ChinaDomain.yaml
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaDomain.yaml"
+    interval: 86400
+  ChinaMedia:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rules/ChinaMedia.yaml
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaMedia.yaml"
+    interval: 86400
+  BanAD:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rules/BanAD.yaml
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/BanAD.yaml"
+    interval: 86400
+  BanProgramAD:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rules/BanProgramAD.yaml
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/BanProgramAD.yaml"
+    interval: 86400
+  ChinaCompanyIp:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rules/ChinaCompanyIp.yaml
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaCompanyIp.yaml"
+    interval: 86400
+  ChinaIp:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rules/ChinaIp.yaml
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaIp.yaml"
+    interval: 86400
+  gfw:
+    type: http
+    behavior: domain
+    format: yaml
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt"
+    path: ./rules/gfw.yaml
+    interval: 86400
+
+
+rules:
+  # 自己添加的规则
+
+  # 自己添加的规则
+  #- DOMAIN-SUFFIX,xn--ngstr-lra8j.com,节点选择
+  #- DOMAIN-SUFFIX,services.googleapis.cn,节点选择
+  #- GEOIP,private,DIRECT
+  - GEOSITE,category-ads-all,REJECT
+  - RULE-SET,YouTube,节点选择
+  - RULE-SET,YouTubeMusic,节点选择
+  - RULE-SET,Google,Google
+  - RULE-SET,GoogleCNProxyIP,Google
+  - GEOSITE,google,Google
+  - GEOIP,google,Google,no-resolve
+  - GEOSITE,geolocation-!cn,节点选择
+  - RULE-SET,gfw,节点选择
+  - RULE-SET,LocalAreaNetwork,DIRECT
+  - RULE-SET,UnBan,DIRECT
+  - RULE-SET,ChinaDomain,DIRECT
+  - RULE-SET,ChinaMedia,DIRECT
+  - RULE-SET,BanAD,REJECT
+  - RULE-SET,BanProgramAD,REJECT
+  - RULE-SET,ChinaCompanyIp,DIRECT,no-resolve
+  - RULE-SET,ChinaIp,DIRECT,no-resolve
+  - GEOSITE,PRIVATE,DIRECT
+  - GEOSITE,CN,DIRECT
+  - GEOIP,CN,DIRECT,no-resolve
+  - MATCH,节点选择
