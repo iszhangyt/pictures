@@ -93,8 +93,6 @@ profile:
   store-fake-ip: true
   # 储存 fakeip 映射表，域名再次发生连接时，使用原有映射地址
 
-#unified-delay: true #优化延迟显示
-
 find-process-mode: strict
 global-client-fingerprint: chrome
 
