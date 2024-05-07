@@ -308,7 +308,35 @@ rule-providers:
 
 rules:
   # 自己添加的规则
-
+  - DOMAIN-SUFFIX,google.iszhangyt.cn,节点选择
+  - DOMAIN-SUFFIX,ctc.run,节点选择
+  - DOMAIN-SUFFIX,dy1.mmydy.xyz,节点选择
+  - DOMAIN-SUFFIX,alipansou.com,节点选择
+  - DOMAIN-SUFFIX,hysteria.network,节点选择
+  - PROCESS-NAME,NatTypeTester.exe,节点选择
+  - DOMAIN-SUFFIX,ipjiance.com,节点选择
+  - IP-CIDR,23.94.84.40/32,节点选择
+  - PROCESS-NAME,AdsPower Global.exe,节点选择
+  - DOMAIN-SUFFIX,time.windows.com,DIRECT
+  - DOMAIN-SUFFIX,speedtest.net,节点选择
+  - DOMAIN-SUFFIX,ipinfo.io,节点选择
+  - DOMAIN-SUFFIX,us.taishan.pro,节点选择
+  - DOMAIN-SUFFIX,bulianglin.com,节点选择
+  - DOMAIN-SUFFIX,wenku8.cc,节点选择
+  - DOMAIN-SUFFIX,wenku8.net,节点选择
+  - DOMAIN-SUFFIX,wenku8.com,节点选择
+  - DOMAIN-SUFFIX,linovelib.com,节点选择
+  - DOMAIN-SUFFIX,bilinovel.com,节点选择
+  - DOMAIN-SUFFIX,readpai.com,节点选择
+  - DOMAIN-SUFFIX,copymanga.site,节点选择
+  - DOMAIN-SUFFIX,mangafunb.fun,节点选择
+  - DOMAIN-SUFFIX,mangafuna.xyz,节点选择
+  - DOMAIN,myip.ipip.net,节点选择
+  #- DOMAIN,stun.l.google.com,节点选择
+  - DOMAIN-SUFFIX,frp.one,DIRECT
+  - DOMAIN-SUFFIX,miyoushe.com,DIRECT
+  - DOMAIN-SUFFIX,browserleaks.com,节点选择
+    # 自己添加的规则
   # 自己添加的规则
   #- DOMAIN-SUFFIX,xn--ngstr-lra8j.com,节点选择
   #- DOMAIN-SUFFIX,services.googleapis.cn,节点选择
