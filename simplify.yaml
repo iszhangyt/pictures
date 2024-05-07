@@ -46,7 +46,7 @@ dns:
   enable: true
   prefer-h3: true
   listen: 0.0.0.0:1053
-  ipv6: true
+  ipv6: false
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
@@ -311,7 +311,7 @@ rules:
   #- DOMAIN-SUFFIX,xn--ngstr-lra8j.com,节点选择
   #- DOMAIN-SUFFIX,services.googleapis.cn,节点选择
   #- GEOIP,private,DIRECT
-  - GEOSITE,category-ads-all,REJECT
+  #- GEOSITE,category-ads-all,REJECT
   - RULE-SET,YouTube,节点选择
   - RULE-SET,YouTubeMusic,节点选择
   - RULE-SET,Google,Google
@@ -324,8 +324,8 @@ rules:
   - RULE-SET,UnBan,DIRECT
   - RULE-SET,ChinaDomain,DIRECT
   - RULE-SET,ChinaMedia,DIRECT
-  - RULE-SET,BanAD,REJECT
-  - RULE-SET,BanProgramAD,REJECT
+  #- RULE-SET,BanAD,REJECT
+  #- RULE-SET,BanProgramAD,REJECT
   - RULE-SET,ChinaCompanyIp,DIRECT,no-resolve
   - RULE-SET,ChinaIp,DIRECT,no-resolve
   - GEOSITE,PRIVATE,DIRECT
