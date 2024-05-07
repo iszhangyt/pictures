@@ -71,15 +71,15 @@ dns:
   nameserver:
     - system
     - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
+    - https://223.6.6.6/dns-query
   proxy-server-nameserver:
     - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
+    - https://223.6.6.6/dns-query
   nameserver-policy:
     "geosite:cn,private":
       #- system
       - https://doh.pub/dns-query
-      - https://dns.alidns.com/dns-query
+      - https://223.6.6.6/dns-query
     "geosite:geolocation-!cn,gfw":
       - tls://8.8.4.4#节点选择
       - https://1.0.0.1/dns-query#节点选择
@@ -98,8 +98,12 @@ profile:
 find-process-mode: strict
 global-client-fingerprint: chrome
 
+#优化延迟显示
+unified-delay: true
+
 mode: rule
 ipv6: false
+tcp-concurrent: true
 log-level: info
 allow-lan: false
 mixed-port: 7890
