@@ -308,6 +308,7 @@ rule-providers:
 
 rules:
   # 自己添加的规则
+  - DOMAIN-SUFFIX,moegirl.org.cn,节点选择
   - DOMAIN-SUFFIX,google.iszhangyt.cn,节点选择
   - DOMAIN-SUFFIX,ctc.run,节点选择
   - DOMAIN-SUFFIX,dy1.mmydy.xyz,节点选择
