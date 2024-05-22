@@ -200,10 +200,24 @@ proxies:
       path: "/?ed=2048"
       headers:
         Host: aa.iszhangyt.cn
+  - type: vless
+    name: CF2
+    server: jiedian.isgv.me
+    port: 443
+    uuid: bc80d1de-2ba6-42dd-8603-4ca682dbfdc7
+    network: ws
+    tls: true
+    udp: false
+    sni: jiedian.isgv.me
+    client-fingerprint: randomized
+    ws-opts:
+      path: "/?ed=2560"
+      headers:
+        host: jiedian.isgv.me
 
 proxy-groups:
   - {name: 节点选择, type: select, proxies: [海獭, taishan, 365Cloud, 自建节点, 链式代理], icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg}
-  - {name: 自建节点, type: select, proxies: [香港, 美国cdn, hysteria2, 美国hy2, CF Worker]}
+  - {name: 自建节点, type: select, proxies: [香港, 美国cdn, hysteria2, 美国hy2, CF Worker, CF2]}
   - {name: 365Cloud, <<: *use5}
   - {name: 海獭, <<: *use1}
   - {name: Google, <<: *use1, filter: "(?i)美|us|unitedstates|united states", proxies: [DIRECT, 365Cloud], icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google.svg}
