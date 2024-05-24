@@ -99,16 +99,46 @@ dns:
       - https://doh.pub/dns-query
       - https://223.6.6.6/dns-query
       - https://120.53.53.53/dns-query
-    "geosite:google,youtube,telegram,gfw,geolocation-!cn,gfw":
-      - https://1.1.1.1/dns-query#节点选择
-      - https://8.8.4.4/dns-query#节点选择
-      - https://1.0.0.1/dns-query#节点选择
-      - https://8.8.8.8/dns-query#节点选择
-      - https://cloudflare-dns.com/dns-query#节点选择
-      - https://194.242.2.3/dns-query#节点选择
-      - https://194.242.2.2/dns-query#节点选择
-      - https://208.67.220.220/dns-query#节点选择
-      - https://208.67.222.222/dns-query#节点选择
+    "rule-set:YouTube,YouTubeMusic":
+      - 'https://1.1.1.1/dns-query#节点选择'
+      - 'https://8.8.4.4/dns-query#节点选择'
+      - 'https://1.0.0.1/dns-query#节点选择'
+      - 'https://8.8.8.8/dns-query#节点选择'
+      - 'https://cloudflare-dns.com/dns-query#节点选择'
+      - 'https://194.242.2.3/dns-query#节点选择'
+      - 'https://194.242.2.2/dns-query#节点选择'
+      - 'https://208.67.220.220/dns-query#节点选择'
+      - 'https://208.67.222.222/dns-query#节点选择'
+    "rule-set:Google":
+      - 'https://1.1.1.1/dns-query#Google'
+      - 'https://8.8.4.4/dns-query#Google'
+      - 'https://1.0.0.1/dns-query#Google'
+      - 'https://8.8.8.8/dns-query#Google'
+      - 'https://cloudflare-dns.com/dns-query#Google'
+      - 'https://194.242.2.3/dns-query#Google'
+      - 'https://194.242.2.2/dns-query#Google'
+      - 'https://208.67.220.220/dns-query#Google'
+      - 'https://208.67.222.222/dns-query#Google'
+    "geosite:google":
+      - 'https://1.1.1.1/dns-query#Google'
+      - 'https://8.8.4.4/dns-query#Google'
+      - 'https://1.0.0.1/dns-query#Google'
+      - 'https://8.8.8.8/dns-query#Google'
+      - 'https://cloudflare-dns.com/dns-query#Google'
+      - 'https://194.242.2.3/dns-query#Google'
+      - 'https://194.242.2.2/dns-query#Google'
+      - 'https://208.67.220.220/dns-query#Google'
+      - 'https://208.67.222.222/dns-query#Google'
+    "geosite:telegram,gfw,geolocation-!cn,gfw":
+      - 'https://1.1.1.1/dns-query#节点选择'
+      - 'https://8.8.4.4/dns-query#节点选择'
+      - 'https://1.0.0.1/dns-query#节点选择'
+      - 'https://8.8.8.8/dns-query#节点选择'
+      - 'https://cloudflare-dns.com/dns-query#节点选择'
+      - 'https://194.242.2.3/dns-query#节点选择'
+      - 'https://194.242.2.2/dns-query#节点选择'
+      - 'https://208.67.220.220/dns-query#节点选择'
+      - 'https://208.67.222.222/dns-query#节点选择'
 
 profile:
   store-selected: true
