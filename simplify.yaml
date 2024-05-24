@@ -66,26 +66,40 @@ dns:
   default-nameserver:
     - 1.1.1.1
     - 8.8.8.8
+    - 180.76.76.76
     - 114.114.114.114
     - 223.6.6.6
+    - https://120.53.53.53/dns-query
   nameserver:
     - system
     - https://doh.pub/dns-query
     - https://223.6.6.6/dns-query
+    - https://120.53.53.53/dns-query
   proxy-server-nameserver:
     - https://doh.pub/dns-query
     - https://223.6.6.6/dns-query
+    - https://120.53.53.53/dns-query
   nameserver-policy:
-    "geosite:cn,private":
+    "geosite:cn,private,geolocation-cn,apple-cn":
       #- system
       - https://doh.pub/dns-query
       - https://223.6.6.6/dns-query
-    "geosite:geolocation-!cn,gfw":
-      - tls://8.8.4.4#节点选择
-      - https://1.0.0.1/dns-query#节点选择
-      - tls://8.8.8.8#节点选择
+      - https://120.53.53.53/dns-query
+    "rule-set:SteamCN":
+      #- system
+      - https://doh.pub/dns-query
+      - https://223.6.6.6/dns-query
+      - https://120.53.53.53/dns-query
+    "geosite:google,youtube,telegram,gfw,geolocation-!cn,gfw":
       - https://1.1.1.1/dns-query#节点选择
+      - https://8.8.4.4/dns-query#节点选择
+      - https://1.0.0.1/dns-query#节点选择
+      - https://8.8.8.8/dns-query#节点选择
       - https://cloudflare-dns.com/dns-query#节点选择
+      - https://194.242.2.3/dns-query#节点选择
+      - https://194.242.2.2/dns-query#节点选择
+      - https://208.67.220.220/dns-query#节点选择
+      - https://208.67.222.222/dns-query#节点选择
 
 profile:
   store-selected: true
@@ -318,10 +332,18 @@ rule-providers:
     url: "https://cdn.xiui.top/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt"
     path: ./rules/gfw.yaml
     interval: 86400
+  SteamCN:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN_No_Resolve.yaml"
+    path: ./rules/SteamCN_No_Resolve.yaml
+    interval: 86400
 
 
 rules:
   # 自己添加的规则
+  - RULE-SET,SteamCN,DIRECT
   - DOMAIN-SUFFIX,moegirl.org.cn,节点选择
   - DOMAIN-SUFFIX,google.iszhangyt.cn,节点选择
   - DOMAIN-SUFFIX,ctc.run,节点选择
