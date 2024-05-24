@@ -124,7 +124,7 @@ external-controller: 127.0.0.1:9090
 
 geodata-mode: true
 geo-auto-update: true
-geo-update-interval: 24
+geo-update-interval: 12
 geox-url:
   geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
   geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
