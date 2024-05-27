@@ -438,6 +438,7 @@ rules:
   #- DOMAIN-SUFFIX,xn--ngstr-lra8j.com,节点选择
   #- DOMAIN-SUFFIX,services.googleapis.cn,节点选择
   #- GEOSITE,category-ads-all,REJECT
+  - DOMAIN-SUFFIX,misakaf.org,Emby公益服
   - DOMAIN,emby.aca.best,Emby公益服
   - RULE-SET,Emby,Emby公益服,no-resolve
   - RULE-SET,YouTube,节点选择
