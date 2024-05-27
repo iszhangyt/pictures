@@ -109,6 +109,16 @@ dns:
       - https://doh.pub/dns-query
       - https://223.6.6.6/dns-query
       - https://120.53.53.53/dns-query
+    "geosite:telegram":
+      - 'https://1.1.1.1/dns-query#TG'
+      - 'https://8.8.4.4/dns-query#TG'
+      - 'https://1.0.0.1/dns-query#TG'
+      - 'https://8.8.8.8/dns-query#TG'
+      - 'https://cloudflare-dns.com/dns-query#TG'
+      - 'https://194.242.2.3/dns-query#TG'
+      - 'https://194.242.2.2/dns-query#TG'
+      - 'https://208.67.220.220/dns-query#TG'
+      - 'https://208.67.222.222/dns-query#TG'
     "rule-set:YouTube,YouTubeMusic":
       - 'https://1.1.1.1/dns-query#节点选择'
       - 'https://8.8.4.4/dns-query#节点选择'
@@ -286,6 +296,7 @@ proxy-groups:
   - {name: taishan, <<: *use2}
   - {name: Google, <<: *use1, filter: "(?i)美|us|unitedstates|united states", proxies: [DIRECT, 365Cloud], icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google.svg}
   - {name: 自建节点, type: select, proxies: [香港, 美国cdn, hysteria2, 美国hy2, CF Worker, CF2]}
+  - {name: TG, type: select, use: [ACA], filter: "(?i)新加坡|sg|singapore", icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/telegram.svg}
   - {name: Emby公益服, type: select, use: [ACA], proxies: [节点选择], icon: https://cdn.xiui.top/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png}
 
 
@@ -438,6 +449,8 @@ rules:
   #- DOMAIN-SUFFIX,xn--ngstr-lra8j.com,节点选择
   #- DOMAIN-SUFFIX,services.googleapis.cn,节点选择
   #- GEOSITE,category-ads-all,REJECT
+  - GEOSITE,telegram,TG
+  - GEOIP,telegram,TG,no-resolve
   - DOMAIN-SUFFIX,misakaf.org,Emby公益服
   - DOMAIN,emby.aca.best,Emby公益服
   - RULE-SET,Emby,Emby公益服,no-resolve
