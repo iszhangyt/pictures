@@ -297,7 +297,7 @@ proxy-groups:
   - {name: Google, <<: *use1, filter: "(?i)美|us|unitedstates|united states", proxies: [DIRECT, 365Cloud], icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google.svg}
   - {name: 自建节点, type: select, proxies: [香港, 美国cdn, hysteria2, 美国hy2, CF Worker, CF2]}
   - {name: TG, type: select, use: [ACA], filter: "(?i)新加坡|sg|singapore", icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/telegram.svg}
-  - {name: Emby公益服, type: select, use: [ACA], proxies: [节点选择], icon: https://cdn.xiui.top/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png}
+  - {name: Emby公益服, type: select, use: [ACA], proxies: [节点选择, DIRECT], icon: https://cdn.xiui.top/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png}
 
 
 
