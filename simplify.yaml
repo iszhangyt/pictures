@@ -39,7 +39,7 @@ proxy-providers:
   'taishan':
     <<: *p
     path: ./proxy/provider2.yaml
-    url: "https://google.iszhangyt.cn/proxy/https://jp.taishan1.pro/api/v1/client/subscribe?token=9acb0b89bc9c9d90af9a5862eb690a51"
+    url: "https://google.iszhangyt.cn/proxy/https/jp.taishan1.pro/api/v1/client/subscribe?token=9acb0b89bc9c9d90af9a5862eb690a51"
 
 
   '365Cloud':
