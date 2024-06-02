@@ -50,7 +50,7 @@ proxy-providers:
   'ACA':
     <<: *p
     path: ./proxy/provider6.yaml
-    url: "https://api.acaisbest.shop/api/v1/client/subscribe?token=5341082380569d6f2050d60ebd95acb5"
+    url: "https://api.acaisbest.shop/api/v1/client/subscribe?token=50c20b707c17ebb9a9ffb27b7199912b"
     
 dns:
   enable: true
