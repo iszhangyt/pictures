@@ -298,11 +298,12 @@ proxy-groups:
   - {name: 自建节点, type: select, proxies: [香港, 美国cdn, hysteria2, 美国hy2, CF Worker, CF2]}
   - {name: TG, type: select, use: [ACA], filter: "(?i)新加坡|sg|singapore", icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/telegram.svg}
   - {name: Emby公益服, type: select, use: [ACA], proxies: [节点选择, DIRECT], icon: https://cdn.xiui.top/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png}
+  - {name: TikTok, type: select, use: [ACA], proxies: [海獭, taishan, 365Cloud, DIRECT]}
 
 
 
   #链式代理
-  - {name: 链式代理, type: relay, proxies: [海獭, 链式]}
+  - {name: 链式代理, type: relay, proxies: [海獭, 海獭, 链式]}
 
 rule-providers:
   YouTube:
@@ -410,6 +411,13 @@ rule-providers:
     url: "https://cdn.xiui.top/https://raw.githubusercontent.com/MisakaFxxk/MisakaF_Subconverter/main/Sub/Emby.list"
     path: ./rules/Emby.yaml
     interval: 86400
+  TikTok:
+    type: http
+    behavior: classical
+    format: text
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok_No_Resolve.yaml"
+    path: ./rules/TikTok.yaml
+    interval: 86400
 
 
 rules:
@@ -454,6 +462,7 @@ rules:
   - DOMAIN-SUFFIX,misakaf.org,Emby公益服
   - DOMAIN,emby.aca.best,Emby公益服
   - RULE-SET,Emby,Emby公益服,no-resolve
+  - RULE-SET,TikTok,TikTok
   - RULE-SET,YouTube,节点选择
   - RULE-SET,YouTubeMusic,节点选择
   - RULE-SET,Google,Google
