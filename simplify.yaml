@@ -303,7 +303,7 @@ proxy-groups:
 
 
   #链式代理
-  - {name: 链式代理, type: relay, proxies: [海獭, 海獭, 链式]}
+  - {name: 链式代理, type: relay, proxies: [海獭, 链式]}
 
 rule-providers:
   YouTube:
