@@ -170,7 +170,7 @@ find-process-mode: strict
 global-client-fingerprint: chrome
 
 #优化延迟显示
-unified-delay: true
+unified-delay: false
 
 mode: rule
 ipv6: false
@@ -189,16 +189,6 @@ geox-url:
   geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
   mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
 
-tun:
-  enable: true
-  stack: gvisor
-  dns-hijack:
-    - 'any:53'
-  auto-route: true
-  auto-detect-interface: true
-
-
-  
 proxies:
   - name: '美国cdn'
     type: vless
