@@ -413,7 +413,9 @@ rule-providers:
 rules:
   # 自己添加的规则
   - RULE-SET,SteamCN,DIRECT
-  - DOMAIN-SUFFIX,moegirl.org.cn,节点选择
+  - DOMAIN,api.moegirl.org.cn,节点选择
+  - DOMAIN,commons.moegirl.org.cn,节点选择
+  - DOMAIN,zh.moegirl.org.cn,节点选择
   - DOMAIN-SUFFIX,google.iszhangyt.cn,节点选择
   - DOMAIN-SUFFIX,ctc.run,节点选择
   - DOMAIN-SUFFIX,dy1.mmydy.xyz,节点选择
