@@ -228,14 +228,16 @@ proxies:
   - name: "香港"
     type: vless
     server: 23.97.65.209
-    port: 30354
-    uuid: eac3bbb3-e085-48f6-ced2-585f8300d98b
+    port: 56510
+    uuid: 0220b44c-3d19-42db-811b-3e3e564caaae
     network: tcp
     tls: true
     udp: true
-    servername: 23-97-65-209.nip.io
+    servername: oheng.com
     flow: xtls-rprx-vision 
     client-fingerprint: chrome
+    reality-opts: 
+      public-key: g-oxbqigzCaXqARxuyD2_vbTYeMD9zn8wnTo02S69QM
     # xudp: true #default
     # skip-cert-verify: true
 
