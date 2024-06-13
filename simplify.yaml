@@ -204,15 +204,6 @@ proxies:
       path: "/2c2a6393"
       headers:
         Host: cf.isgv.me
-  - name: "hysteria2"
-    type: hysteria2
-    server: 23.97.65.209
-    port: 443
-    #  up和down均不写或为0则使用BBR流控
-    up: "30 Mbps" # 若不写单位，默认为 Mbps
-    down: "350 Mbps" # 若不写单位，默认为 Mbps
-    password: 123456
-    sni: hy.isgv.me
 
   - name: "美国hy2"
     type: hysteria2
@@ -240,15 +231,6 @@ proxies:
       public-key: g-oxbqigzCaXqARxuyD2_vbTYeMD9zn8wnTo02S69QM
     # xudp: true #default
     # skip-cert-verify: true
-
-  # 链式代理节点
-  - name: "链式"
-    type: ss
-    server: 23.94.84.40
-    port: 51429
-    cipher: aes-256-gcm
-    password: "O340oVJ7XAetLonVnludY0fh5l5Wb6n3FH7pH26TnIgp"
-    udp: true
   
   - name: CF Worker
     type: vless
@@ -281,21 +263,18 @@ proxies:
         host: jiedian.isgv.me
 
 proxy-groups:
-  - {name: 节点选择, type: select, proxies: [海獭, taishan, 365Cloud, ACA, 自建节点, 链式代理], icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg}
+  - {name: 节点选择, type: select, proxies: [海獭, taishan, 365Cloud, ACA, 自建节点], icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg}
   - {name: ACA, <<: *use6, icon: https://cdn.xiui.top/https://github.com/iszhangyt/pictures/blob/img/img/aca.jpg }
   - {name: 海獭, <<: *use1}
   - {name: 365Cloud, <<: *use5}
   - {name: taishan, <<: *use2}
   - {name: Google, <<: *use1, filter: "(?i)美|us|unitedstates|united states", proxies: [DIRECT, 365Cloud], icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google.svg}
-  - {name: 自建节点, type: select, proxies: [香港, 美国cdn, hysteria2, 美国hy2, CF Worker, CF2]}
+  - {name: 自建节点, type: select, proxies: [香港, 美国cdn, 美国hy2, CF Worker, CF2]}
   - {name: TG, type: select, use: [ACA], filter: "(?i)新加坡|sg|singapore", icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/telegram.svg}
   - {name: Emby公益服, type: select, use: [ACA], proxies: [节点选择, DIRECT], icon: https://cdn.xiui.top/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png}
   - {name: TikTok, type: select, use: [ACA], proxies: [海獭, taishan, 365Cloud, DIRECT]}
 
 
-
-  #链式代理
-  - {name: 链式代理, type: relay, proxies: [海獭, 链式]}
 
 rule-providers:
   YouTube:
