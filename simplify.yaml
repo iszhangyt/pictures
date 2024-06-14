@@ -396,7 +396,7 @@ rules:
   - RULE-SET,SteamCN,DIRECT
   - DOMAIN,api.moegirl.org.cn,节点选择
   - DOMAIN,commons.moegirl.org.cn,节点选择
-  - DOMAIN,zh.moegirl.org.cn,节点选择
+  - DOMAIN,mzh.moegirl.org.cn,节点选择
   - DOMAIN-SUFFIX,google.iszhangyt.cn,节点选择
   - DOMAIN-SUFFIX,ctc.run,节点选择
   - DOMAIN-SUFFIX,dy1.mmydy.xyz,节点选择
