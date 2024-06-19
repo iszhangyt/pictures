@@ -50,7 +50,7 @@ proxy-providers:
   'ACA':
     <<: *p
     path: ./proxy/provider6.yaml
-    url: "https://substore.isgv.me/download/ACA?target=ClashMeta"
+    url: "https://api.acaisbest.shop/api/v1/client/subscribe?token=50c20b707c17ebb9a9ffb27b7199912b"
     
 dns:
   enable: true
@@ -261,6 +261,7 @@ proxies:
       path: "/?ed=2560"
       headers:
         host: jiedian.isgv.me
+  - {"name":"🇺🇸 Emby家人组 0.01x","type":"ss","server":"tjsedht.cfprefer1.xyz","port":39808,"cipher":"aes-256-gcm","password":"c8cd6e6b-b813-4d28-8c11-5f1fc4fe7e23","udp":true}
 
 proxy-groups:
   - {name: 节点选择, type: select, proxies: [海獭, taishan, 365Cloud, ACA, 自建节点], icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg}
@@ -271,7 +272,7 @@ proxy-groups:
   - {name: Google, <<: *use1, filter: "(?i)美|us|unitedstates|united states", proxies: [DIRECT, 365Cloud], icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google.svg}
   - {name: 自建节点, type: select, proxies: [香港, 美国cdn, 美国hy2, CF Worker, CF2]}
   - {name: TG, type: select, use: [ACA], filter: "(?i)新加坡|sg|singapore", icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/telegram.svg}
-  - {name: Emby公益服, type: select, use: [ACA], proxies: [节点选择, DIRECT], icon: https://cdn.xiui.top/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png}
+  - {name: Emby公益服, type: select, use: [ACA], proxies: [节点选择, 🇺🇸 Emby家人组 0.01x, DIRECT], icon: https://cdn.xiui.top/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png}
   - {name: TikTok, type: select, use: [ACA], proxies: [海獭, taishan, 365Cloud, DIRECT]}
 
 
