@@ -50,7 +50,7 @@ proxy-providers:
   'ACA':
     <<: *p
     path: ./proxy/provider6.yaml
-    url: "https://api.acaisbest.shop/api/v1/client/subscribe?token=50c20b707c17ebb9a9ffb27b7199912b"
+    url: "https://substore.isgv.me/download/ACA?target=ClashMeta"
     
 dns:
   enable: true
