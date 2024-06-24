@@ -1,0 +1,64 @@
+proxies:
+  - name: "香港"
+    type: vless
+    server: 23.97.65.209
+    port: 56510
+    uuid: 0220b44c-3d19-42db-811b-3e3e564caaae
+    network: tcp
+    tls: true
+    udp: true
+    servername: oheng.com
+    flow: xtls-rprx-vision 
+    client-fingerprint: chrome
+    reality-opts: 
+      public-key: g-oxbqigzCaXqARxuyD2_vbTYeMD9zn8wnTo02S69QM
+    # xudp: true #default
+    # skip-cert-verify: true
+
+
+  - name: '美国cdn'
+    type: vless
+    server: 103.184.45.248
+    port: 443
+    uuid: 2c2a6393-0fa4-405d-e762-a89f6dacdf8f
+    # skip-cert-verify: true
+    udp: true
+    tls: true
+    network: ws
+    servername: cf.isgv.me
+    ws-opts:
+      path: "/2c2a6393"
+      headers:
+        Host: cf.isgv.me
+  
+  - name: CF Worker
+    type: vless
+    server: www.gov.se
+    port: 443
+    uuid: b95fead6-7101-43f9-b512-96efeff05bb8
+    udp: true
+    tls: true
+    network: ws
+    #client-fingerprint:
+    skip-cert-verify: true 
+    servername: aa.iszhangyt.cn
+    ws-opts:
+      path: "/?ed=2048"
+      headers:
+        Host: aa.iszhangyt.cn
+
+  - type: vless
+    name: CF2
+    server: www.gov.se   # jiedian.isgv.me
+    port: 443
+    uuid: bc80d1de-2ba6-42dd-8603-4ca682dbfdc7
+    network: ws
+    tls: true
+    udp: false
+    sni: jiedian.isgv.me
+    client-fingerprint: randomized
+    ws-opts:
+      path: "/?ed=2560"
+      headers:
+        host: jiedian.isgv.me
+  - {"name":"🇺🇸 Emby家人组 0.01x","type":"ss","server":"tjsedht.cfprefer1.xyz","port":39808,"cipher":"aes-256-gcm","password":"c8cd6e6b-b813-4d28-8c11-5f1fc4fe7e23","udp":true}
