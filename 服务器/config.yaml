@@ -1,0 +1,231 @@
+mode: rule
+mixed-port: 7890
+allow-lan: true
+log-level: info
+tcp-concurrent: true
+udp: true
+ipv6: false
+secret: 'qaz0721'
+external-controller: 0.0.0.0:61313
+external-ui: /etc/mihomo/ui
+
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip" #从 GitHub Pages 分支获取
+
+#这里是订阅更新和延迟测试相关的
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://www.qualcomm.cn/generate_204, interval: 300}}
+
+use1: &use1
+  type: select
+  use:
+  - 'ACA'
+
+use2: &use2
+  type: select
+  use:
+  - 'zhijianjiedian'
+  - 'zhijianjiedian2'
+
+proxy-providers:
+  'ACA':
+    <<: *p  
+    url: https://api.acaisbest.shop/api/v1/client/subscribe?token=50c20b707c17ebb9a9ffb27b7199912b 
+    path: ./proxy/ACA.yaml
+  'zhijianjiedian':
+    <<: *p
+    path: ./proxy/zijianjiedian.yaml
+    url: "https://raw.githubusercontent.com/iszhangyt/pictures/clash/zijianjiedian.yaml"
+    override:
+      additional-suffix: " | 自建"
+  'zhijianjiedian2':
+    <<: *p
+    path: ./proxy/zhijianjiedian2.yaml
+    url: "https://raw.githubusercontent.com/iszhangyt/pictures/clash/zhijianjiedian2.yaml"
+    override:
+      additional-suffix: " | 自建"
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+dns:
+  enable: true
+  prefer-h3: true
+  listen: 0.0.0.0:1053
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*'
+    - '+.lan'
+    - '+.local'
+    - '+.msftncsi.com'
+    - '+.msftconnecttest.com'
+    - '+.xboxlive.com'
+    - 'xbox.*.microsoft.com'
+    - +.stun.*.*
+    - +.stun.*.*.*
+    - +.stun.*.*.*.*
+    - +.stun.*.*.*.*.*
+    - "*.n.n.srv.nintendo.net"
+    - +.stun.playstation.net
+    - '*.mcdn.bilivideo.cn'
+    - '+.qq.com'
+    - '+.tencent.com'
+    - 'y.qq.com'
+    - '*.y.qq.com'
+    - 'ntp.*.com'
+    - 'ntp1.*.com'
+    - 'ntp2.*.com'
+    - 'ntp3.*.com'
+    - 'ntp4.*.com'
+    - 'ntp5.*.com'
+    - 'ntp6.*.com'
+    - 'ntp7.*.com'
+    - '*.time.edu.cn'
+    - '*.ntp.org.cn'
+    - '+.pool.ntp.org'
+    - 'time1.cloud.tencent.com'
+    - 'time.*.com'
+    - 'time.*.gov'
+    - 'time.*.edu.cn'
+    - 'time.*.apple.com'
+    - 'time-ios.apple.com'
+    - 'time1.*.com'
+    - 'time2.*.com'
+    - 'time3.*.com'
+    - 'time4.*.com'
+    - 'time5.*.com'
+    - 'time6.*.com'
+    - 'time7.*.com'
+  default-nameserver:
+    - 1.1.1.1
+    - 8.8.8.8
+    - 180.76.76.76
+    - 114.114.114.114
+    - 223.6.6.6
+    - https://223.6.6.6/dns-query
+  nameserver:
+    - system  
+    - https://doh.pub/dns-query
+    - https://223.6.6.6/dns-query
+    - https://120.53.53.53/dns-query
+  proxy-server-nameserver:
+    - https://doh.pub/dns-query
+    - https://223.6.6.6/dns-query
+    - https://120.53.53.53/dns-query
+  nameserver-policy:
+    www.gstatic.com:
+    - https://doh.pub/dns-query
+    - https://223.6.6.6/dns-query
+    - https://120.53.53.53/dns-query
+    - https://1.1.1.1/dns-query
+    - https://8.8.4.4/dns-query
+    - https://1.0.0.1/dns-query
+    - https://8.8.8.8/dns-query
+    - https://cloudflare-dns.com/dns-query
+    geosite:private,cn,geolocation-cn,apple-cn:
+    - system
+    - https://doh.pub/dns-query
+    - https://223.6.6.6/dns-query
+    - https://120.53.53.53/dns-query
+    geosite:gfw,geolocation-!cn,gfw:
+    - https://1.1.1.1/dns-query#节点选择
+    - https://8.8.4.4/dns-query#节点选择
+    - https://1.0.0.1/dns-query#节点选择
+    - https://8.8.8.8/dns-query#节点选择
+    - https://cloudflare-dns.com/dns-query#节点选择
+    - https://194.242.2.3/dns-query#节点选择
+    - https://194.242.2.2/dns-query#节点选择
+    - https://208.67.220.220/dns-query#节点选择
+    - https://208.67.222.222/dns-query#节点选择
+geox-url:
+  geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+  asn: "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
+
+find-process-mode: strict
+global-client-fingerprint: chrome
+geo-update-interval: 24
+geodata-mode: true
+geo-auto-update: true
+
+tun:
+  enable: false
+  stack: gvisor
+  dns-hijack:
+    - 'any:53'
+  auto-route: true
+  auto-detect-interface: true
+
+proxy-groups:
+  - {name: 节点选择, type: select, proxies: [自建节点, ACA家人组, DIRECT], icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg}
+  - {name: ACA, <<: *use1, icon: https://cdn.xiui.top/https://github.com/iszhangyt/pictures/blob/img/img/aca.jpg }
+  - {name: 自建节点, type: select, <<: *use2, icon: https://cdn.xiui.top/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Vpn.png}
+ 
+
+rule-providers:
+  LocalAreaNetwork:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rules/LocalAreaNetwork.yaml
+    url: https://cdn.xiui.top/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/LocalAreaNetwork.yaml
+    interval: 86400
+  UnBan:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rules/UnBan.yaml
+    url: https://cdn.xiui.top/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/UnBan.yaml
+    interval: 86400
+  ChinaDomain:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rules/ChinaDomain.yaml
+    url: https://cdn.xiui.top/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaDomain.yaml
+    interval: 86400
+  ChinaMedia:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rules/ChinaMedia.yaml
+    url: https://cdn.xiui.top/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaMedia.yaml
+    interval: 86400
+  ChinaIp:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rules/ChinaIp.yaml
+    url: https://cdn.xiui.top/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaIp.yaml
+    interval: 86400
+  gfw:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://cdn.xiui.top/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt
+    path: ./rules/gfw.yaml
+    interval: 86400
+  ChinaCompanyIp:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rules/ChinaCompanyIp.yaml
+    url: "https://cdn.xiui.top/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaCompanyIp.yaml"
+    interval: 86400
+rules:
+- DOMAIN,myip.ipip.net,节点选择
+- DOMAIN-SUFFIX,frp.one,DIRECT
+- GEOSITE,apple-cn,DIRECT
+- GEOSITE,geolocation-!cn,节点选择
+- RULE-SET,gfw,节点选择
+- RULE-SET,LocalAreaNetwork,DIRECT,no-resolve
+- RULE-SET,UnBan,DIRECT
+- RULE-SET,ChinaDomain,DIRECT
+- RULE-SET,ChinaMedia,DIRECT
+- RULE-SET,ChinaCompanyIp,DIRECT,no-resolve
+- RULE-SET,ChinaIp,DIRECT,no-resolve
+- GEOIP,private,DIRECT,no-resolve
+- GEOSITE,CN,DIRECT
+- GEOIP,CN,DIRECT,no-resolve
+- MATCH,节点选择
