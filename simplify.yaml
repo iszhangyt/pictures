@@ -23,6 +23,11 @@ use6: &use6
   type: select
   use:
     - 'ACA'
+### 临时
+use7: &use7
+  type: select
+  use:
+    - 'ACA内鬼'
 
 
 
@@ -51,6 +56,11 @@ proxy-providers:
     <<: *p
     path: ./proxy/provider6.yaml
     url: "https://api.acaisbest.shop/api/v1/client/subscribe?token=50c20b707c17ebb9a9ffb27b7199912b"
+
+  'ACA内鬼':
+    <<: *p
+    path: ./proxy/provider7.yaml
+    url: "http://hy.isgv.me:3001/substore/download/ACA630?target=ClashMeta"
     
 dns:
   enable: true
@@ -264,8 +274,9 @@ proxies:
   - {"name":"🇺🇸 Emby家人组 0.01x","type":"ss","server":"tjsedht.cfprefer1.xyz","port":39808,"cipher":"aes-256-gcm","password":"c8cd6e6b-b813-4d28-8c11-5f1fc4fe7e23","udp":true}
 
 proxy-groups:
-  - {name: 节点选择, type: select, proxies: [海獭, taishan, 365Cloud, ACA, 自建节点], icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg}
+  - {name: 节点选择, type: select, proxies: [海獭, taishan, 365Cloud, ACA, ACA内鬼, 自建节点], icon: https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg}
   - {name: ACA, <<: *use6, icon: https://cdn.xiui.top/https://github.com/iszhangyt/pictures/blob/img/img/aca.jpg }
+  - {name: ACA内鬼, <<: *use7, icon: https://cdn.xiui.top/https://github.com/iszhangyt/pictures/blob/img/img/aca.jpg }
   - {name: 海獭, <<: *use1}
   - {name: 365Cloud, <<: *use5}
   - {name: taishan, <<: *use2}
