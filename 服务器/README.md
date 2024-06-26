@@ -1,5 +1,5 @@
-- 下载二进制可执行文件 releases
-- 将下载的二进制可执行文件重名名为 mihomo 并移动到 /usr/local/bin/
++ 下载二进制可执行文件 releases
+* 将下载的二进制可执行文件重名名为 mihomo 并移动到 /usr/local/bin/
 - 以守护进程的方式，运行 mihomo
 
 使用以下命令将 Clash 二进制文件复制到 /usr/local/bin, 配置文件复制到 /etc/mihomo:
@@ -45,6 +45,10 @@ systemctl start mihomo
 使用以下命令使 mihomo 重新加载：
 ```
 systemctl reload mihomo
+```
+使用以下命令停止 mihomo：
+```
+systemctl stop mihomo
 ```
 使用以下命令检查 mihomo 的运行状况：
 ```
