@@ -1,48 +1,82 @@
-# 在linux服务器配置clash代理
+## 在linux服务器配置mihomo
+下载二进制可执行文件 releases,解压
+```
+tar -zxvf filename.tar.gz
+或
+gunzip filename.gz
+```
+**将下载的二进制可执行文件重名名为 mihomo 并移动到 /usr/local/bin/**
+重命名
+```
+mv 文件名 mihomo
+```
+赋予可执行权限
+```
+chmod +x ./mihomo
+```
+**以守护进程的方式，运行 mihomo**
 
-```bash
-#下载Linux版Clash.zip
-解压
-unzip clash.zip
-cd clash
-# 重命名
-mv clash-linux-amd64-v1.10.0 clash
-#在这一步需要新建一个proxy.yaml文件在当前文件夹下，并将代理的终端配置文件复制到proxy.yaml中。如果你曾使用过windows的clash，可以点击Profiles，右键edit配置文件，然后就可以复制内容了。
-chmod +x ./clash
-./clash -f proxy.yaml -d . #使用proxy.yaml启动代理
-# 复制clash 到/usr/bin/文件夹(这样在终端任何位置执行 clash 即可启动)
-sudo mv clash /usr/bin/
-
-clash 默认会在 ~/.config/clash 目录下生成两个配置文件 config.yaml 和 Country.mmdb
-在其他平台获取可用的 config.yaml 配置文件后，可替换原来 ~/.config/clash 目录下的配置文件，也可以在运行clash时，使用 -f 指定配置文件，示例：clash -f config.yaml (运行clash并指定配置文件为./config.yaml)
+使用以下命令将 Clash 二进制文件复制到 /usr/local/bin, 配置文件复制到 /etc/mihomo:
+```
+mv mihomo /usr/local/bin
+mkdir /etc/mihomo
+wget https://raw.githubusercontent.com/iszhangyt/pictures/clash/service/config.yaml
+mv config.yaml /etc/mihomo
 ```
 
-\# 创建clash.service文件，并编辑该文件
-
+创建 systemd 配置文件 
 ```
-sudo vim /etc/systemd/system/clash.service
+vim /etc/systemd/system/mihomo.service
 ```
-
-\# 粘贴以下内容
-
 ```
 [Unit]
-Description=clash
-After=network.target
+Description=mihomo Daemon, Another Clash Kernel.
+After=network.target NetworkManager.service systemd-networkd.service iwd.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/clash -f /root/.config/clash/config.yaml
-Restart=on-failure
+LimitNPROC=500
+LimitNOFILE=1000000
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_TIME CAP_SYS_PTRACE CAP_DAC_READ_SEARCH CAP_DAC_OVERRIDE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_TIME CAP_SYS_PTRACE CAP_DAC_READ_SEARCH CAP_DAC_OVERRIDE
+Restart=always
+ExecStartPre=/usr/bin/sleep 1s
+ExecStart=/usr/local/bin/mihomo -d /etc/mihomo
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
 ```
 
+使用以下命令重新加载 systemd:
 ```
-# 依次执行如下命令(reload: 刷新守护进程, enable: 开启自启动, start: 启动, status: 查看状态)
-sudo systemctl daemon-reload
-sudo systemctl enable clash
-sudo systemctl start clash
-sudo systemctl status clash
+systemctl daemon-reload
+```
+启用 mihomo 开机自启服务：
+```
+systemctl enable mihomo
+```
+使用以下命令立即启动 mihomo:
+```
+systemctl start mihomo
+```
+使用以下命令使 mihomo 重新加载：
+```
+systemctl reload mihomo
+```
+使用以下命令停止 mihomo：
+```
+systemctl stop mihomo
+```
+使用以下命令检查 mihomo 的运行状况：
+```
+systemctl status mihomo
+```
+使用以下命令检查 mihomo 的运行日志：
+```
+journalctl -u mihomo -o cat -e
+```
+或
+```
+journalctl -u mihomo -o cat -f
 ```
