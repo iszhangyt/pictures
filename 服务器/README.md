@@ -14,7 +14,7 @@ mv 文件名 mihomo
 ```
 赋予可执行权限
 ```
-chmod +x ./clash
+chmod +x ./mihomo
 ```
 **以守护进程的方式，运行 mihomo**
 
