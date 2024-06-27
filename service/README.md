@@ -10,7 +10,7 @@ gunzip filename.gz
 ```
 mv 文件名 mihomo
 ```
-赋予可执行权限
+赋予内核可执行权限
 ```
 chmod +x ./mihomo
 ```
