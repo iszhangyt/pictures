@@ -20,7 +20,7 @@ chmod +x ./mihomo
 ```
 mv mihomo /usr/local/bin
 mkdir /etc/mihomo
-wget https://raw.githubusercontent.com/iszhangyt/pictures/clash/%E6%9C%8D%E5%8A%A1%E5%99%A8/config.yaml
+wget https://raw.githubusercontent.com/iszhangyt/pictures/clash/service/config.yaml
 mv config.yaml /etc/mihomo
 ```
 
