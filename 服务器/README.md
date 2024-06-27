@@ -4,8 +4,6 @@
 tar -zxvf filename.tar.gz
 或
 gunzip filename.gz
-
-cd filename
 ```
 **将下载的二进制可执行文件重名名为 mihomo 并移动到 /usr/local/bin/**
 重命名
@@ -22,6 +20,7 @@ chmod +x ./mihomo
 ```
 mv mihomo /usr/local/bin
 mkdir /etc/mihomo
+wget https://raw.githubusercontent.com/iszhangyt/pictures/clash/%E6%9C%8D%E5%8A%A1%E5%99%A8/config.yaml
 mv config.yaml /etc/mihomo
 ```
 
