@@ -1,17 +1,34 @@
-**下载二进制可执行文件 releases**
+## 在linux服务器配置mihomo
+下载二进制可执行文件 releases,解压
+```
+tar -zxvf filename.tar.gz
+或
+gunzip filename.gz
 
+cd filename
+```
 **将下载的二进制可执行文件重名名为 mihomo 并移动到 /usr/local/bin/**
-
+重命名
+```
+mv 文件名 mihomo
+```
+赋予可执行权限
+```
+chmod +x ./clash
+```
 **以守护进程的方式，运行 mihomo**
 
 使用以下命令将 Clash 二进制文件复制到 /usr/local/bin, 配置文件复制到 /etc/mihomo:
 ```
-cp mihomo /usr/local/bin
+mv mihomo /usr/local/bin
 mkdir /etc/mihomo
-cp config.yaml /etc/mihomo
+mv config.yaml /etc/mihomo
 ```
 
-创建 systemd 配置文件 /etc/systemd/system/mihomo.service:
+创建 systemd 配置文件 
+```
+vim /etc/systemd/system/mihomo.service
+```
 ```
 [Unit]
 Description=mihomo Daemon, Another Clash Kernel.
