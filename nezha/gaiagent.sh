@@ -13,7 +13,7 @@ curl -o "$SCRIPT_FILE" "$SCRIPT_URL"
 chmod +x "$SCRIPT_FILE"
 
 # 执行下载的脚本
-"$SCRIPT_FILE"
+"$SCRIPT_FILE" "$@"
 
 # 执行sed命令来修改nezha-agent.service文件
 sed -i '/^ExecStart=/ {/"--disable-auto-update"/! s/$/ "--disable-auto-update"/}' /etc/systemd/system/nezha-agent.service
