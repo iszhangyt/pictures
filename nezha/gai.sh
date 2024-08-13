@@ -9,7 +9,7 @@ echo "系统架构: $architecture"
 case $architecture in
     x86_64)
         echo "检测到AMD架构，下载并安装nezha-agent..."
-        wget https://github.com/nezhahq/agent/releases/download/v0.18.5/nezha-agent_linux_amd64.zip \
+        wget https://github.com/nezhahq/agent/releases/download/$1/nezha-agent_linux_amd64.zip \
         && unzip nezha-agent_linux_amd64.zip \
         && rm nezha-agent_linux_amd64.zip \
         && mv nezha-agent /opt/nezha/agent/nezha-agent \
@@ -17,7 +17,7 @@ case $architecture in
         ;;
     arm64|aarch64)
         echo "检测到ARM64架构，下载并安装nezha-agent..."
-        wget https://github.com/nezhahq/agent/releases/download/v0.18.5/nezha-agent_linux_arm64.zip \
+        wget https://github.com/nezhahq/agent/releases/download/$1/nezha-agent_linux_arm64.zip \
         && unzip nezha-agent_linux_arm64.zip \
         && rm nezha-agent_linux_arm64.zip \
         && mv nezha-agent /opt/nezha/agent/nezha-agent \
