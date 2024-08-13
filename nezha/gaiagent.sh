@@ -18,14 +18,18 @@ echo "替换agent版本为：$@"
 "$SCRIPT_FILE" "$@"
 
 # 执行sed命令来修改nezha-agent.service文件
-enco "修改nezha-agent.service文件,关闭自动更新"
+echo "修改nezha-agent.service文件,关闭自动更新"
 sed -i '/^ExecStart=/ {
   /--disable-auto-update/! s/$/ --disable-auto-update/
   /--disable-force-update/! s/$/ --disable-force-update/
 }' /etc/systemd/system/nezha-agent.service
 # 重新加载 systemd 守护进程
-enco "重新加载 systemd 守护进程"
-systemctl daemon-reload
+echo "重新加载 systemd 守护进程"
+sudo systemctl daemon-reload
+
+# 重启agent
+echo "重启agent"
+sudo systemctl status nezha-agent
 
 # 删除下载的脚本
 rm -f "$SCRIPT_FILE"
