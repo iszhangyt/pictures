@@ -29,7 +29,7 @@ sudo systemctl daemon-reload
 
 # 重启agent
 echo "重启agent"
-sudo systemctl status nezha-agent
+sudo systemctl restart nezha-agent
 
 # 删除下载的脚本
 rm -f "$SCRIPT_FILE"
