@@ -4,6 +4,11 @@ curl -sSL https://raw.githubusercontent.com/iszhangyt/pictures/main/nezha/gaiage
 ```
 #### 哪吒探针禁用Agent自动更新命令  
 ```
-sed -i '/^ExecStart=/ {/"--disable-auto-update"/! s/$/ "--disable-auto-update"/}' /etc/systemd/system/nezha-agent.service && systemctl daemon-reload
+sed -i '/^ExecStart=/ {
+  /--disable-auto-update/! s/$/ --disable-auto-update/
+  /--disable-force-update/! s/$/ --disable-force-update/
+  s/"--disable-auto-update"/--disable-auto-update/
+  s/"--disable-force-update"/--disable-force-update/
+}' /etc/systemd/system/nezha-agent.service && systemctl daemon-reload
 ```
 
