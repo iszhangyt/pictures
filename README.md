@@ -1,3 +1,26 @@
+## DD系统
+下载前记得更新源，安装 wget 组件，以下命令仅对应原系统：
+
+Debian 系（Debian Kali Ubuntu）：
+```
+apt update
+apt update install wget -y
+```
+红帽系（CentOS AlmaLinux RockyLinux Fedora 等）：
+```
+dnf install wget -y
+```
+AlpineLinux（需要安装 wget bash 组件，并把系统默认的 shell 从 ash 改成 bash）：
+```
+apk update
+apk install wget bash
+sed -i 's/root:\/bin\/ash/root:\/bin\/bash/g' /etc/passwd
+```
+下载并运行脚本：
+```
+wget --no-check-certificate -qO InstallNET.sh 'https://raw.githubusercontent.com/leitbogioro/Tools/master/Linux_reinstall/InstallNET.sh' && chmod a+x InstallNET.sh && bash InstallNET.sh -debian 12 -pwd 'ZDXGPNw3t7UF3y' -swap "2048" --bbr  
+```
+
 # 必要更新操作(Debian/Ubuntu)
 
 ```
