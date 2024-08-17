@@ -1,4 +1,4 @@
-## DD系统
+## DD系统\([使用史上最强DD脚本](https://github.com/leitbogioro/Tools)\)
 下载前记得更新源，安装 wget 组件，以下命令仅对应原系统：
 
 Debian 系（Debian Kali Ubuntu）：
@@ -16,11 +16,15 @@ apk update
 apk install wget bash
 sed -i 's/root:\/bin\/ash/root:\/bin\/bash/g' /etc/passwd
 ```
-下载并运行脚本：
+下载并运行脚本：  
+国外
 ```
-wget --no-check-certificate -qO InstallNET.sh 'https://raw.githubusercontent.com/leitbogioro/Tools/master/Linux_reinstall/InstallNET.sh' && chmod a+x InstallNET.sh && bash InstallNET.sh -debian 12 -pwd 'ZDXGPNw3t7UF3y' -swap "2048" --bbr  
+wget --no-check-certificate -qO InstallNET.sh 'https://raw.githubusercontent.com/leitbogioro/Tools/master/Linux_reinstall/InstallNET.sh' && chmod a+x InstallNET.sh && bash InstallNET.sh -debian 12 -pwd 'ZDXGPNw3t7UF3y' -swap "2048" --bbr
 ```
-
+国内
+```
+wget --no-check-certificate -qO InstallNET.sh 'https://gitee.com/mb9e8j2/Tools/raw/master/Linux_reinstall/InstallNET.sh' && chmod a+x InstallNET.sh && bash InstallNET.sh -debian 12 -pwd 'ZDXGPNw3t7UF3y' -swap "2048" --bbr
+```  
 # 必要更新操作(Debian/Ubuntu)
 
 ```
