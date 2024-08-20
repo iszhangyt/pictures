@@ -11,4 +11,7 @@ sed -i '/^ExecStart=/ {
   s/"--disable-force-update"/--disable-force-update/
 }' /etc/systemd/system/nezha-agent.service && systemctl daemon-reload
 ```
-
+#### 服务器使用密钥登录
+```
+curl -sSL https://raw.githubusercontent.com/iszhangyt/pictures/main/nezha/ssh.sh | sudo bash -s -- '公钥'
+```
