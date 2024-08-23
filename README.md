@@ -4,7 +4,7 @@
 Debian 系（Debian Kali Ubuntu）：
 ```
 apt update
-apt update install wget -y
+apt install wget -y
 ```
 红帽系（CentOS AlmaLinux RockyLinux Fedora 等）：
 ```
