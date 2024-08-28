@@ -1,3 +1,15 @@
+## TG代理
+```
+docker run -d \
+--name mtproxy \
+--restart=always \
+-e domain="portal.azure.com" \
+-e secret="50f842e44caa7a619834d7e4ecea3fd2" \
+-e ip_white_list="OFF" \
+-e provider=1 \
+-p 64444:8443 \
+ellermister/mtproxy
+```
 ## DD系统\([使用史上最强DD脚本](https://github.com/leitbogioro/Tools)\)
 下载前记得更新源，安装 wget 组件，以下命令仅对应原系统：
 
