@@ -10,6 +10,9 @@ docker run -d \
 -p 64444:8443 \
 ellermister/mtproxy
 ```
+```
+docker logs -f mtproxy
+```
 ## DD系统\([使用史上最强DD脚本](https://github.com/leitbogioro/Tools)\)
 下载前记得更新源，安装 wget 组件，以下命令仅对应原系统：
 
