@@ -22,8 +22,10 @@ echo "修改nezha-agent.service文件,关闭自动更新"
 sed -i '/^ExecStart=/ {
   /--disable-auto-update/! s/$/ --disable-auto-update/
   /--disable-force-update/! s/$/ --disable-force-update/
+  /--disable-command-execute/! s/$/ --disable-command-execute/
   s/"--disable-auto-update"/--disable-auto-update/
   s/"--disable-force-update"/--disable-force-update/
+  s/"--disable-command-execute"/--disable-command-execute/
 }' /etc/systemd/system/nezha-agent.service
 # 重新加载 systemd 守护进程
 echo "重新加载 systemd 守护进程"
