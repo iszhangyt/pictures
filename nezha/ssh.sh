@@ -21,22 +21,51 @@ if ! echo "$PUBLIC_KEY" | grep -Eq "^ssh-(rsa|dss|ed25519|ecdsa-sha2-nistp(256|3
     exit 1
 fi
 
-# 禁用密码验证，启用密钥验证，并限制root用户仅允许通过密钥登录
-SSHD_CONFIG="/etc/ssh/sshd_config"
+# 函数来更新配置文件
+update_ssh_config() {
+    local file="$1"
+    sed -i "s/^#*PasswordAuthentication .*/PasswordAuthentication no/" "$file"
+    sed -i "s/^#*ChallengeResponseAuthentication .*/ChallengeResponseAuthentication no/" "$file"
+    sed -i "s/^#*UsePAM .*/UsePAM no/" "$file"
+    sed -i "s/^#*PermitRootLogin .*/PermitRootLogin prohibit-password/" "$file"
+    sed -i "s/^#*PubkeyAuthentication .*/PubkeyAuthentication yes/" "$file"
+}
 
-sed -i "s/^#*PasswordAuthentication .*/PasswordAuthentication no/" $SSHD_CONFIG
-sed -i "s/^#*ChallengeResponseAuthentication .*/ChallengeResponseAuthentication no/" $SSHD_CONFIG
-sed -i "s/^#*UsePAM .*/UsePAM no/" $SSHD_CONFIG
-sed -i "s/^#*PermitRootLogin .*/PermitRootLogin prohibit-password/" $SSHD_CONFIG
-sed -i "s/^#*PubkeyAuthentication .*/PubkeyAuthentication yes/" $SSHD_CONFIG
+# 更新主配置文件
+update_ssh_config "/etc/ssh/sshd_config"
+
+# 获取主配置文件所在目录
+BASE_DIR=$(dirname "/etc/ssh/sshd_config")
+
+# 从主配置文件中查找包含的配置文件
+INCLUDE_FILES=$(grep -E "^Include" /etc/ssh/sshd_config | awk '{print $2}')
+
+# 更新所有包含的配置文件
+for pattern in $INCLUDE_FILES; do
+    # 转换相对路径为绝对路径
+    if [[ "$pattern" != /* ]]; then
+        pattern="$BASE_DIR/$pattern"
+    fi
+    for conf_file in $pattern; do
+        if [ -f "$conf_file" ]; then
+            update_ssh_config "$conf_file"
+        fi
+    done
+done
 
 # 创建~/.ssh目录并设置权限
 mkdir -p /root/.ssh
 chmod 700 /root/.ssh
 
-# 将公钥添加到authorized_keys文件
-echo "$PUBLIC_KEY" >> /root/.ssh/authorized_keys
-chmod 600 /root/.ssh/authorized_keys
+# 检查并添加公钥到authorized_keys文件
+AUTHORIZED_KEYS="/root/.ssh/authorized_keys"
+if ! grep -Fxq "$PUBLIC_KEY" "$AUTHORIZED_KEYS"; then
+    echo "$PUBLIC_KEY" >> "$AUTHORIZED_KEYS"
+    chmod 600 "$AUTHORIZED_KEYS"
+    echo "公钥已添加到 authorized_keys 文件。"
+else
+    echo "公钥已存在于 authorized_keys 文件中。"
+fi
 
 # 重启SSH服务
 echo "正在重新启动 SSH 服务..."
