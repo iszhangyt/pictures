@@ -57,18 +57,26 @@ done
 mkdir -p /root/.ssh
 chmod 700 /root/.ssh
 
-# 检查并添加公钥到authorized_keys文件
+# 检查并添加公钥到 authorized_keys 文件
 AUTHORIZED_KEYS="/root/.ssh/authorized_keys"
-if ! grep -Fxq "$PUBLIC_KEY" "$AUTHORIZED_KEYS"; then
+
+if grep -Fxq "$PUBLIC_KEY" "$AUTHORIZED_KEYS"; then
+    echo "公钥已存在于 authorized_keys 文件中。"
+elif grep -Fq "$PUBLIC_KEY" "$AUTHORIZED_KEYS"; then
+    # 移除带有特定命令或选项的公钥
+    sed -i "\|$PUBLIC_KEY|d" "$AUTHORIZED_KEYS"
+    # 添加纯粹的公钥
+    echo "$PUBLIC_KEY" >> "$AUTHORIZED_KEYS"
+    chmod 600 "$AUTHORIZED_KEYS"
+    echo "公钥已更新，移除特定命令或选项。"
+else
     echo "$PUBLIC_KEY" >> "$AUTHORIZED_KEYS"
     chmod 600 "$AUTHORIZED_KEYS"
     echo "公钥已添加到 authorized_keys 文件。"
-else
-    echo "公钥已存在于 authorized_keys 文件中。"
 fi
 
 # 重启SSH服务
 echo "正在重新启动 SSH 服务..."
 systemctl restart sshd
 
-echo "SSH 配置已完成。root 仅允许基于密钥的登录."
+echo "SSH 配置已完成。root 仅允许基于密钥的登录。"
